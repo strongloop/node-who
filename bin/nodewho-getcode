@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -e
+
+echo Loading Node.js code data as of $(date)
+
+echo
+
+mkdir -p repos
+cd repos
+
+if [ -d node ]
+then
+  cd node
+  git fetch --all
+  git pull
+  cd -
+else
+  git clone https://github.com/joyent/node.git
+fi
+
+if [ -d libuv ]
+then
+  cd libuv
+  git fetch --all
+  git pull
+  cd -
+else
+  git clone https://github.com/joyent/libuv.git
+fi

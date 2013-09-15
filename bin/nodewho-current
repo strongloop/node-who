@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+set -e
+
+BASEDIR=$PWD
+
+# Node
+echo Node contributors by current line count:
+echo ==== ============ == ======= ==== ======
+cd $BASEDIR/repos/node
+
+# get Node files
+declare -a FILES=()
+for FILE_LINE in `git ls-tree -r --name-only HEAD | grep -v -f $BASEDIR/conf/ignore-files-node`; do
+  FILES+=("$FILE_LINE")
+done
+
+for FILE in "${FILES[@]}"; do
+  git blame --line-porcelain $FILE 2>/dev/null | grep "^author " | sed -n 's/^author //p'
+done | sort | uniq -c | sort -rn
+
+echo
+
+echo OUT OF
+for FILE in "${FILES[@]}"; do
+  cat "$FILE"
+done | wc -l
+
+echo
+
+# libuv
+echo libuv contributors by current line count:
+echo ===== ============ == ======= ==== ======
+cd $BASEDIR/repos/libuv
+
+# get libuv files
+declare -a FILES=()
+for FILE_LINE in `git ls-tree -r --name-only HEAD | grep -v -f $BASEDIR/conf/ignore-files-libuv`; do
+  FILES+=("$FILE_LINE")
+done
+
+for FILE in "${FILES[@]}"; do
+  git blame --line-porcelain $FILE 2>/dev/null | grep "^author " | sed -n 's/^author //p'
+done | sort | uniq -c | sort -rn
+
+echo
+
+echo OUT OF
+for FILE in "${FILES[@]}"; do
+  cat "$FILE"
+done | wc -l
+
+echo

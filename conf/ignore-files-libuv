@@ -1,0 +1,10 @@
+\.md$
+libuv/include/uv-private/pthread-fixes.h
+libuv/include/uv-private/stdint-msvc2008.h
+libuv/include/uv-private/tree.h
+libuv/m4/dtrace.m4
+libuv/src/inet.c
+libuv/src/unix/pthread-fixes.c
+AUTHORS
+ChangeLog
+LICENSE
