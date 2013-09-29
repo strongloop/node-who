@@ -8,9 +8,12 @@ echo Node contributors by current line count:
 echo ==== ============ == ======= ==== ======
 cd $BASEDIR/repos/node
 
+# strip comments
+git apply ../../conf/copyrights-node.diff
+
 # get Node files
 declare -a FILES=()
-for FILE_LINE in `git ls-tree -r --name-only HEAD | grep -v -f $BASEDIR/conf/ignore-files-node`; do
+for FILE_LINE in `git ls-files | grep -v -f $BASEDIR/conf/ignore-files-node`; do
   FILES+=("$FILE_LINE")
 done
 
@@ -32,9 +35,12 @@ echo libuv contributors by current line count:
 echo ===== ============ == ======= ==== ======
 cd $BASEDIR/repos/libuv
 
+# strip comments
+git apply ../../conf/copyrights-libuv.diff
+
 # get libuv files
 declare -a FILES=()
-for FILE_LINE in `git ls-tree -r --name-only HEAD | grep -v -f $BASEDIR/conf/ignore-files-libuv`; do
+for FILE_LINE in `git ls-files | grep -v -f $BASEDIR/conf/ignore-files-libuv`; do
   FILES+=("$FILE_LINE")
 done
 

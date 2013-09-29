@@ -11,6 +11,7 @@ cd repos
 if [ -d node ]
 then
   cd node
+  git reset --hard
   git fetch --all
   git pull
   cd -
@@ -21,6 +22,7 @@ fi
 if [ -d libuv ]
 then
   cd libuv
+  git reset --hard
   git fetch --all
   git pull
   cd -
