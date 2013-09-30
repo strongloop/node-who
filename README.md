@@ -12,10 +12,9 @@ Grab the code for local analysis: `bin/nodewho-getcode`
 
 ## Use The Analyzer
 
-See who contributed to the current codebase: `bin/nodewho-current`  
-_Note: this can take a while_
+See who contributed to the current codebase: `bin/nodewho-current` (_this can take a while_)
 
-If some time has passed since your last analysis, update the code before running `nodewho-current`: `bin/nodewho-getcode`
+** Note: you must update the code before running `nodewho-current`: `bin/nodewho-getcode` **
 
 ## Bonus: Calculate Percentages
 
