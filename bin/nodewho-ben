@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -e
+
+BASEDIR=$PWD
+
+# Node
+echo Node contributions by Ben Noordhuis
+echo ==== ============= == === =========
+cd $BASEDIR/repos/node
+
+# strip comments
+git apply ../../conf/copyrights-node.diff
+
+# get Node files
+declare -a FILES=()
+for FILE_LINE in `git ls-files | grep -v -f $BASEDIR/conf/ignore-files-node`; do
+  FILES+=("$FILE_LINE")
+done
+
+echo > $BASEDIR/tmp/node.txt
+for FILE in "${FILES[@]}"; do
+  git blame -c $FILE | grep Noordhuis | cat >> $BASEDIR/tmp/node.txt
+done
+
+echo -n Total:
+cat $BASEDIR/tmp/node.txt | wc -l
+echo See tmp/node.txt to inspect blame lines further.
+
+echo
+
+# libuv
+echo libuv contributions by Ben Noordhuis
+echo ===== ============= == === =========
+cd $BASEDIR/repos/libuv
+
+# strip comments
+git apply ../../conf/copyrights-libuv.diff
+
+# get libuv files
+declare -a FILES=()
+for FILE_LINE in `git ls-files | grep -v -f $BASEDIR/conf/ignore-files-libuv`; do
+  FILES+=("$FILE_LINE")
+done
+
+echo > $BASEDIR/tmp/libuv.txt
+for FILE in "${FILES[@]}"; do
+  git blame -c $FILE | grep Noordhuis | cat >> $BASEDIR/tmp/libuv.txt
+done
+
+echo -n Total:
+cat $BASEDIR/tmp/libuv.txt | wc -l
+echo See tmp/libuv.txt to inspect blame lines further.
+
+echo
