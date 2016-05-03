@@ -28,7 +28,8 @@
     "ejs": "*",
     "nodegit": "*",
     "orm": "*",
-    "sqlite3" : "2.1.7",
+    "sqlite3": "2.1.7",
     "commander": "~1.1.1"
-  }
+  },
+  "license": "MIT"
 }
