@@ -21,7 +21,9 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "express": "3.3.4",
@@ -29,7 +31,9 @@
     "nodegit": "*",
     "orm": "*",
     "sqlite3": "2.1.7",
-    "commander": "~1.1.1"
+    "commander": "~1.1.1",
+    "snyk": "^1.83.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
