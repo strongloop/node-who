@@ -24,7 +24,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "express": "3.3.4",
+    "express": "4.16.0",
     "ejs": "*",
     "nodegit": "*",
     "orm": "*",
